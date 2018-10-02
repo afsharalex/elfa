@@ -1,0 +1,54 @@
+* ELFA - Emacs Lisp Financial Analysis
+** Description
+ELFA aims to provide an easy way to work with Stock market data in both Elisp and Org mode (for use with other languages). It uses Alpha Vantage for its API. The basics will serve as a stock market watchlist ticker to quickly pull the latest prices. However, the goal is to be much more advanced than this, and provide an environment to work with more complex calculations and graphs for financial and data analysts, or hobby investors.
+** Usage
+As ELFA currently uses Alpha Vantage for its API, you must set your api key (which is available for free upon registration). The recommended way to do this is create a file called ".avkey.el" with the following in it (not a real key, replace with your key):
+
+#+BEGIN_SRC elisp
+  (defvar avkey 'xs35rt65)
+#+END_SRC
+
+*Make sure the key is quoted by adding a "'" directly in front of it.*
+
+** Commands
+The following commands are available from ELFA.
+
+- M-x elfa-get-stock :: Look for specified stock, display current price in minibuffer.
+
+- M-x elfa-add-to-watchlist :: Add stock symbol to watchlist.
+
+- M-x elfa-add-alert :: Set an alert for a stock price (must be on watchlist).
+
+- M-x elfa-watchlist :: Show watchlist with current stock prices in minibuffer.
+
+- M-x elfa-playground :: Open org buffer with ELFA & watchlist loaded to analyze data.
+
+** Todo
+*** TODO elfa- (common functionality) [0%]
+**** TODO Look for AVKEY, abort if not found (AVKEY check)
+**** TODO Look for watchlist variable, abort if not found (watchlist check)
+*** TODO elfa-get-stock [0%]
+**** TODO Accept input from user
+**** TODO Convert from string to symbol
+**** TODO Try and retrieve price for symbol, display error if not found
+*** TODO elfa-add-to-watchlist [0%]
+**** TODO AVKEY check
+**** TODO Watchlist check
+**** TODO Update watchlist with new value
+**** TODO Show user watchlist in minibuffer
+*** TODO elfa-add-alert [0%]
+**** TODO AVKEY check
+**** TODO Look for alert variable, '() if not found
+**** TODO Update alert variable
+**** TODO Add hook
+*** TODO elfa-watchlist [0%]
+**** TODO Watchlist check
+**** TODO AVKEY check
+**** TODO Retrieve current prices for each symbol
+**** TODO Display in minibuffer
+*** TODO elfa-playground [0%]
+**** TODO Open Org buffer preloaded with watchlist, and some helper functions
+** License
+Copyright \copy 2018 Alex Afshar
+
+Distributed under the GNU General Public License, version 3
